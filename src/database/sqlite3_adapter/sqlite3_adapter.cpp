@@ -18,7 +18,7 @@ AdapterSqlite3::~AdapterSqlite3()
 
 bool AdapterSqlite3::connect()
 {
-    int rc = sqlite3_open( get_database_name(), &database );
+    rc = sqlite3_open( get_database_name(), &database );
     if( rc != SQLITE_OK )
         return false;
     return true;
@@ -44,16 +44,23 @@ bool AdapterSqlite3::remove()
     return true;
 }
 
+bool AdapterSqlite3::is_open()
+{
+    if( rc && rc == SQLITE_OK )
+        return true;
+    return false;
+}
+
 bool AdapterSqlite3::exec_sql( const char* request, tuple_vector* data )
 {
-    int exit = 0; 
-    exit = sqlite3_open("abba.db", &database); 
-  
-    if (exit) { 
-        std::cerr << "Error open DB " << sqlite3_errmsg(database) << std::endl; 
-        return false; 
-    } 
-    sqlite3_close(database); 
+    // int exit = 0;
+    // exit = sqlite3_open( get_database_name(), &database );
+    char** err;
+    if( database )
+    {
+        sqlite3_exec(database, request, nullptr, nullptr, err);
+    }
+    // sqlite3_close(database);
     return true;
 }
 

@@ -11,8 +11,10 @@ namespace db{
 class AdapterSqlite3 : public Adapter 
 {
 private:
+    typedef Adapter Parent;
     sqlite3* database;
     char* err_msg;
+    int rc;
 
 public:
     AdapterSqlite3() : Adapter() {}
@@ -25,6 +27,7 @@ public:
     bool create() override;
     bool remove() override;
     bool exec_sql( const char* request, tuple_vector* data ) override;
+    bool is_open() override;
 };
 
 }

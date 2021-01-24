@@ -14,6 +14,8 @@ bool Adapter::remove(){ return true; }
 
 bool Adapter::exec_sql( const char* request, tuple_vector* data ) { return true; }
 
+bool Adapter::is_open() {}
+
 }
 }
 }

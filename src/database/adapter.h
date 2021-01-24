@@ -31,6 +31,8 @@ protected:
     virtual bool create();
     virtual bool remove();
     virtual bool exec_sql( const char* request, tuple_vector* data );
+    virtual bool is_open();
+
 public:
     Adapter() { status = false; };
     Adapter( const char* database_name ) : database_name( database_name ) {}
