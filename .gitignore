@@ -1,0 +1,10 @@
+build/
+CMakeFiles/
+.vscode/
+.settings/
+CTestTestfile.cmake
+.cproject
+.project
+cmake_install.cmake
+CMakeLists.txt.user
+Makefile

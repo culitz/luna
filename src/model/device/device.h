@@ -40,7 +40,11 @@ public:
 
     size_t get_hash() override;
     ptree& get_ptree() override;
+
+    std::map<string, any> as_map() override;
+
     string get_name();
+    string get_uuid();
     string get_settings();
 };
 

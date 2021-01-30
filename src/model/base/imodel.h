@@ -49,6 +49,9 @@ public:
     /// Get boost::property_tree::ptree
     virtual ptree& get_ptree() = 0;
 
+    /// Get std::map<std::string, std::any>
+    virtual std::map<string, any> as_map() = 0;
+
     /// Get object hash
     virtual size_t get_hash() 
     {

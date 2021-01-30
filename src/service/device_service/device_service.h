@@ -1,8 +1,9 @@
 #pragma once
 
+#include <algorithm>
 #include "../../service/service/service.h"
 #include "../../model/device/device.h"
-#include "../../database/sqlite3_adapter/sqlite3_adapter.h"
+#include "../../database/adapter.h"
 
 namespace luna::core
 {
@@ -11,7 +12,7 @@ class DeviceService : public Service
 {
 
 public:
-    DeviceService(db::AdapterSqlite3& adapter) : Service(adapter) {}
+    DeviceService(db::Adapter& adapter) : Service(adapter) {}
     virtual ~DeviceService() {}
 
     bool create( IModel& ) override;

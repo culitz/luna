@@ -5,6 +5,13 @@ namespace luna::core
 
 bool DeviceService::create( IModel& model )
 {
+    std::map<string, any> fields = model.as_map();
+    int id = std::any_cast<int>( fields["id"] );
+    string name = std::any_cast<string>( fields["name"] );
+    string uuid = std::any_cast<string>( fields["uuid"] );
+
+    std::stringstream ss;
+
     return false;
 }
 

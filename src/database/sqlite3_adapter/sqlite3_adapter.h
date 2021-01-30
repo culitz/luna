@@ -1,6 +1,4 @@
-#ifndef _SQLITE3_ADAPTER_H_
-#define _SQLITE3_ADAPTER_H_
-
+#pragma once
 #include "../adapter.h"
 #include <sqlite3.h>
 
@@ -16,22 +14,25 @@ private:
     char* err_msg;
     int rc;
 
+    bool debug;
+
 public:
-    AdapterSqlite3() : Adapter() {}
-    AdapterSqlite3( const char* database_name ) : Adapter( database_name ) {}
+    int (*mCallback)(void*,int,char**,char**);
+
+    AdapterSqlite3();
+    AdapterSqlite3( const char* database_name );
     virtual ~AdapterSqlite3();
 
     bool connect();
     bool connect( const char* host, int port, const char* user, const char* pass ) override;
     bool disconnect() override;
-    bool create() override;
-    bool remove() override;
-    bool exec_sql( const char* request, tuple_vector* data ) override;
+    bool exec_sql(const char* request, RowVect* data) override;
+
+    void set_callback(int (*callback)(void*,int,char**,char**)) { mCallback = callback; }
+
     bool is_open() override;
 };
 
 }
 }
 } // luna
-
-#endif

@@ -90,11 +90,28 @@ ptree& Device::get_ptree()
     return mPtree;
 }
 
+std::map<string, any> Device::as_map()
+{
+    std::map<string, any> m = {
+        std::make_pair( "id", any(get_id()) ),
+        std::make_pair( "name", any(get_name()) ),
+        std::make_pair( "uuid", any(get_uuid()) )
+    };
+    return m;
+}
+
 
 string Device::get_name()
 {
     if( mName )
         return mName.get();
+    return string{};
+}
+
+string Device::get_uuid()
+{
+    if( mUuid )
+        return mUuid.get();
     return string{};
 }
 

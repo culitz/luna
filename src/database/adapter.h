@@ -1,5 +1,4 @@
-#ifndef _DATABASE_H_
-#define _DATABASE_H_
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -9,15 +8,12 @@
 #include <memory>
 
 #include "../types.h"
+#include "row/row.h"
 
 namespace luna{
 namespace core{
 namespace db{
 
-
-typedef std::map<string, any> tuple;
-typedef std::vector<tuple> tuple_vector;
-typedef std::shared_ptr<tuple_vector> tuple_vector_sptr;
 
 class Adapter
 {
@@ -28,15 +24,13 @@ private:
 protected:
     virtual bool connect( const char* host, int port, const char* user, const char* pass );
     virtual bool disconnect();
-    virtual bool create();
-    virtual bool remove();
-    virtual bool exec_sql( const char* request, tuple_vector* data );
+    virtual bool exec_sql( const char* request, RowVect* data );
     virtual bool is_open();
 
 public:
-    Adapter() { status = false; };
+    Adapter() { status = false; }
     Adapter( const char* database_name ) : database_name( database_name ) {}
-    virtual ~Adapter() {};
+    virtual ~Adapter() {}
 
     const char* get_database_name(){ return database_name.c_str(); }
 };
@@ -44,5 +38,3 @@ public:
 } // db
 } // core
 } // luna
-
-#endif

@@ -33,6 +33,7 @@ add_executable(
     "src/main.cpp"
     "src/database/sqlite3_adapter/sqlite3_adapter.cpp"
     "src/database/adapter.cpp"
+    "src/database/row/row.cpp"
     "src/model/device/device.cpp"
     "src/service/service/service.cpp"
     "src/service/device_service/device_service.cpp"
