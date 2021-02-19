@@ -10,7 +10,7 @@ bool Adapter::disconnect(){ return true; }
 
 bool Adapter::exec_sql( const char* request, RowVect* data ) { return true; }
 
-bool Adapter::is_open() {}
+bool Adapter::is_open() { return true; }
 
 }
 }

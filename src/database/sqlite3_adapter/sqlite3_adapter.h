@@ -11,7 +11,7 @@ class AdapterSqlite3 : public Adapter
 private:
     typedef Adapter Parent;
     sqlite3* database;
-    char* err_msg;
+    // char* err_msg;
     int rc;
 
     bool debug;

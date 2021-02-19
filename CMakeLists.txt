@@ -37,6 +37,7 @@ add_executable(
     "src/model/device/device.cpp"
     "src/service/service/service.cpp"
     "src/service/device_service/device_service.cpp"
+    "src/service/device_service/device_service_sql_helper.cpp"
 )
 
 target_link_libraries(
